@@ -4,7 +4,7 @@ connectMongo()
     .then(()=>{console.log('Connected To Mongo')})
     .catch((e)=>{console.log('Connection Error')})
 const app = express()
-const port = 3000
+const port = 5000
 
 //For Using Post Request
 app.use(express.urlencoded())
