@@ -4,11 +4,11 @@ const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 // To Sign Up And Back Sign In
 const jwt = require('jsonwebtoken');
-const express = require('express')
 // const JSON_WT_ = process.env.JSON_WT
-const JSON_WT_ = 'DSD46546987(*&^%$#@'
+const JSON_WT_ = process.env.JSON_WT;
 const User  = require('../models/User')
 const fetchUser = require("../middleware/FetchUser");
+const express = require('express')
 const router = express.Router()
 router.post('/signup',[
     body('mail',"Enter The Valid Email").isEmail(),

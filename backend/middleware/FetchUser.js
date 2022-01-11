@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const JSON_WT = "DSD46546987(*&^%$#@";
+// const JSON_WT = "DSD46546987(*&^%$#@";
+const JSON_WT = process.env.JSON_WT;
 const fetchUser = (request,response,next)=>{
     try{
         const token = request.header('token');
