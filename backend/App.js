@@ -1,13 +1,14 @@
+require('dotenv').config({path : '../backend/.env'})
 let connectMongo = require('./crucial/db')
 const express = require('express')
 connectMongo()
     .then(()=>{console.log('Connected To Mongo')})
-    .catch((e)=>{console.log('Connection Error')})
+    .catch((e)=>{console.log('Connection Error ' + e)})
 const app = express()
 const port = 5000
 
 //For Using Post Request
-app.use(express.urlencoded())
+// app.use(express.urlencoded())
 //For Using The JSON Request
 app.use(express.json())
 // All Available Routes
