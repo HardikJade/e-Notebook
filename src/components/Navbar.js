@@ -4,7 +4,8 @@ export const Navbar = () => {
     let location = useLocation();
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark"> */}
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">e Notebook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,9 +20,16 @@ export const Navbar = () => {
                                 <Link className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} to="/about">About</Link>
                             </li>
                         </ul>
-                        {/* <form className="d-flex">
-                            {`${(localStorage.getItem('token') === null) ? <button className="btn btn-primary">Hello</button> : <button className="btn btn-primary mx-2">Log Out</button>}`}
-                        </form> */}
+                        <form className="d-flex">
+                            {(localStorage.getItem('token') === null) ?
+                                <>
+                                    <button className="btn btn-primary mx-2">Login</button>
+                                    <button className="btn btn-primary">Create Account</button>
+                                </>
+                                :
+                                <button className="btn btn-primary mx-2">Logout</button>
+                            }
+                        </form>
                     </div>
                 </div>
             </nav>
