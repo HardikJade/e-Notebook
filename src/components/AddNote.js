@@ -6,8 +6,8 @@ export const AddNote = () => {
         e.preventDefault();
         let title = document.querySelector('#title').value
         let description = document.querySelector('#description').value
-        let tag = 'general';
-        context.addNote(title,description,tag)
+        let tag = document.querySelector('#tag').value;
+        context.addNote(title,description,tag);
     }
     return (
         <div className="container">
@@ -22,6 +22,11 @@ export const AddNote = () => {
                     <label htmlFor="description" className="form-label">Description</label>
                     <textarea required className="form-control" id="description"/>
                     <div id="descHelp" className="form-text">Description Must Be 5 Character long.</div>
+                </div>
+                <div className="mb-3">
+                    <label htmlFor="tag" className="form-label">Tag</label>
+                    <input className="form-control" id="tag"/>
+                    <div id="tagHelp" className="form-text">Tag Must Be 3 Character long.</div>
                 </div>
                 <div className="container d-flex justify-content-center">
                     <button type="submit" onClick={addNote} className="btn btn-primary">Add A Note</button>

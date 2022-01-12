@@ -1,15 +1,14 @@
 import React,{useContext,useEffect} from 'react'
-import noteContext from '../context/Notes/NoteContext'
+import ModalContext from '../context/Modal/ModalContext'
 export const About = () => {
-    const context = useContext(noteContext)
-    // useEffect(() => {
-    //     console.log(context.state)
-    //     context.setState("HELLO")
-    //     console.log(context.state)
-    // }, [])
+    const context = useContext(ModalContext)
+    console.log(context)
+    useEffect(() => {
+        context.setstate("World")
+    }, [])
     return (
         <div>
-            <h1>This is About {context.state}</h1>
+            <h1>This is About {}</h1>
         </div>
     )
 }

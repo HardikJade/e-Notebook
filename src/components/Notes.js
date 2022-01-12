@@ -3,7 +3,10 @@ import noteContext from '../context/Notes/NoteContext'
 import { NoteItem } from './NoteItem'
 export const Notes = () => {
     const context = useContext(noteContext)
-    const {notes} = context
+    const {notes,getNote} = context
+    useEffect(() => {
+        getNote();
+    }, [])
     return(
         <>
             <div className="row d-flex justify-content-center">

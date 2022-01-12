@@ -30,8 +30,9 @@ router.post('/save-note',fetchUser,[
                 title : title,
                 description : description,
                 tag : tag
-            }).then(()=>{
-                response.status(200).json({"error" : {"type" : "Success"}})
+            }).then((item)=>{
+                response.status(200).json({"error" : {"type" : "Success"},
+                                            "id" :  item._id})
             })
             .catch(()=>{
                 response.status(400).json({"error" : {"type" : "Failed To Save The Note"}})

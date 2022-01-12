@@ -1,12 +1,15 @@
 require('dotenv').config({path : '../backend/.env'})
 let connectMongo = require('./crucial/db')
 const express = require('express')
+const cors = require('cors')
 connectMongo()
     // .then(()=>{console.log('Connected To Mongo')})
     .catch((e)=>{console.log('Connection Error ' + e)})
 const app = express()
-const port = 5000
 
+app.use(cors())
+
+app.use(cors())
 //For Using Post Request
 // app.use(express.urlencoded())
 //For Using The JSON Request
