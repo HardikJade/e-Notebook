@@ -1,7 +1,7 @@
 import React,{useContext,useEffect} from 'react'
-// import noteContext from '../context/Notes/NoteContext'
+import noteContext from '../context/Notes/NoteContext'
 export const About = () => {
-    // const context = useContext(noteContext)
+    const context = useContext(noteContext)
     // useEffect(() => {
     //     console.log(context.state)
     //     context.setState("HELLO")
@@ -9,7 +9,7 @@ export const About = () => {
     // }, [])
     return (
         <div>
-            <h1>This is About</h1>
+            <h1>This is About {context.state}</h1>
         </div>
     )
 }
