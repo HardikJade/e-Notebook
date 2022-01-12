@@ -12,8 +12,10 @@ const NoteState = (props)=>{
           'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
         }
       });
-      let data = await response.json()
-      setNotes(data)
+      if(response.ok){
+        let data = await response.json()
+        setNotes(data)
+      }else{setNotes([])}
     }
       //Add a Note
       const addNote = async (title,description,tag)=>{
@@ -64,10 +66,36 @@ const NoteState = (props)=>{
         }
       }
       //Edit A Note
-      const editNote = (id,title,description,tag)=>{
+      const editNote = async({id,title,description,tag})=>{
         //Add The Call For Update in Database
-        deleteNote(id)
-        addNote(title,description,tag);
+
+        const response = await fetch(`${process.env.REACT_APP_DOMAIN_NAME}api/notes/update-note/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
+          },
+          body : JSON.stringify({
+              "title" : title,
+              "description" : description,
+              "tag" : tag
+            })
+          });
+          let data = await response.json();
+          if(data.error.type === 'Success'){
+            let temp = JSON.parse(JSON.stringify(notes))
+            for(let i = 0 ; i < notes.length ; i++){
+              if(notes[i]._id === id.toString()){
+                temp[i]._id = id
+                temp[i].title = title
+                temp[i].description = description
+                temp[i].tag = tag
+                temp[i].date = '1642018491461'
+                break;
+              } 
+            }
+            setNotes(temp,document.querySelector("#close_modal").click())
+          }
       }
     return(
         <noteContext.Provider value={{notes,addNote,deleteNote,editNote,getNote}}>

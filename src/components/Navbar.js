@@ -4,8 +4,7 @@ export const Navbar = () => {
     let location = useLocation();
     return (
         <>
-            {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark"> */}
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
                     <Link className="navbar-brand" to="/">e Notebook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +22,11 @@ export const Navbar = () => {
                         <form className="d-flex">
                             {(localStorage.getItem('token') === null) ?
                                 <>
-                                    <button className="btn btn-primary mx-2">Login</button>
-                                    <button className="btn btn-primary">Create Account</button>
+                                    <Link className="btn btn-primary mx-2" to='/login' >Login</Link>
+                                    <Link className="btn btn-primary" to='/sign-up' >Create Account</Link>
                                 </>
                                 :
-                                <button className="btn btn-primary mx-2">Logout</button>
+                                <Link to='#' className="btn btn-primary mx-2">Logout</Link>
                             }
                         </form>
                     </div>
