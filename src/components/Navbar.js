@@ -6,7 +6,7 @@ export const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid">
-                    <Link className="navbar-brand" to="/">e Notebook</Link>
+                    <Link className="navbar-brand" to= {`${(localStorage.getItem('token') === null) ? '/login' : '/'}`} >e Notebook</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -26,7 +26,7 @@ export const Navbar = () => {
                                     <Link className="btn btn-primary" to='/sign-up' >Create Account</Link>
                                 </>
                                 :
-                                <Link to='#' className="btn btn-primary mx-2">Logout</Link>
+                                <Link to='/login' onClick={()=>{localStorage.removeItem('token')}} className="btn btn-primary mx-2">Logout</Link>
                             }
                         </form>
                     </div>

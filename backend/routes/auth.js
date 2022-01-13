@@ -43,7 +43,7 @@ router.post('/signup',[
                     'token' : fialSignature
                 }})})
             .catch(e=>
-                {response.status(400).json({"error" : {'type' : "Something Went Wrong "} })})    
+                {response.status(400).json({"error" : {'type' : e} })})    
             }
         }
     })

@@ -9,7 +9,7 @@ const NoteState = (props)=>{
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
+          'token' : localStorage.getItem('token')
         }
       });
       if(response.ok){
@@ -25,7 +25,7 @@ const NoteState = (props)=>{
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
+              'token' : localStorage.getItem('token')
             },
             body : JSON.stringify(
               {
@@ -56,7 +56,7 @@ const NoteState = (props)=>{
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
+          'token' : localStorage.getItem('token')
         }
         });
         let data = await response.json();
@@ -73,7 +73,7 @@ const NoteState = (props)=>{
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            'token' : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXIiOiI2MWRkN2VlZWYxMTM0MTkwMzY0ZjRmYzMifSwiaWF0IjoxNjQxOTIyNzE3fQ.kfP47WJ9oolRuLh1jUK5HYwbgwtyz8R2-JXD3xB79fU'
+            'token' : localStorage.getItem('token')
           },
           body : JSON.stringify({
               "title" : title,
@@ -86,11 +86,11 @@ const NoteState = (props)=>{
             let temp = JSON.parse(JSON.stringify(notes))
             for(let i = 0 ; i < notes.length ; i++){
               if(notes[i]._id === id.toString()){
-                temp[i]._id = id
-                temp[i].title = title
-                temp[i].description = description
-                temp[i].tag = tag
-                temp[i].date = '1642018491461'
+                temp[i]._id = id;
+                temp[i].title = title;
+                temp[i].description = description;
+                temp[i].tag = tag;
+                temp[i].date = notes[i].date;
                 break;
               } 
             }

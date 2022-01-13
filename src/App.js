@@ -19,15 +19,12 @@ function App() {
                 <Modal/>
                 <Switch>
                   <Route exact path="/">
-                    {(localStorage.getItem('token') === null)
-                     ? 
-                     <Login/> 
-                     :
-                      <Home/>
-                    } 
+                    <Home/>
                   </Route>
                   <Route exact path="/about"><About /></Route>
-                  <Route exact path="/login"><Login /></Route>
+                  <Route exact path="/login">
+                    <Login/> 
+                  </Route>
                   <Route exact path="/sign-up"><SignUp /></Route>
                 </Switch>
               </div>

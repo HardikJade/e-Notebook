@@ -1,11 +1,18 @@
 import React,{useContext, useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 import noteContext from '../context/Notes/NoteContext'
 import { NoteItem } from './NoteItem'
 export const Notes = () => {
     const context = useContext(noteContext)
     const {notes,getNote} = context
+    const history = useHistory();
     useEffect(() => {
-        getNote();
+        if(localStorage.getItem('token') === null){
+            history.push('/login')
+            
+        }else{
+            getNote();
+        }
     }, [])
     return(
         <>
